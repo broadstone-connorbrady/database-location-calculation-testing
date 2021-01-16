@@ -1,0 +1,39 @@
+version: '3'
+services:
+  mysql-server:
+    image: 'mysql:5.7'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    command: --init-file /data/application/init.sql
+    restart: always
+    ports:
+      - "3307:3306"
+    expose:
+      - "3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./docker/init.sql:/data/application/init.sql
+  api:
+    depends_on:
+      - mysql-server
+    env_file:
+      - docker/docker.env
+    environment:
+      - WAIT_HOSTS=mysql-server:3306
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=2
+      - WAIT_HOST_CONNECT_TIMEOUT=300
+      - COMPOSE_HTTP_TIMEOUT=300
+    command: sh -c "chmod u+x /var/www/wait && /var/www/wait && php /var/www/html/artisan migrate && php -S localhost:8000 -t /var/www/html/public"
+    restart: always
+    build:
+      context: .
+    ports:
+      - "8000:8000" # First number is local, Second number is port in container
+    volumes:
+      - /var/www/html/vendor # No : so do not map this folder (For when deps aren't installed)
+      - .:/var/www/html # Map the current context outside the container to the path inside the container
+      - ./wait:/var/www/wait
+
+volumes:
+  dbdata: {}
