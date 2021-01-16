@@ -1,0 +1,4 @@
+DB PORT: 3307
+DB NAME: a-database
+DB USER: user
+DB PASS: root
