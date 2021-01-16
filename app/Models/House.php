@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 
 class House extends Model
 {
+    use Uuid;
+
     protected $table = 'houses';
 
     protected $hidden = ['id', 'created_at', 'updated_at', 'status_id', 'estate_agent_id', 'location_id'];

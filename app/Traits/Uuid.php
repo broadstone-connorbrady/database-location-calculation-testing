@@ -57,13 +57,20 @@ trait Uuid
     protected static function bootUuid()
     {
         static::creating(function ($model) {
-            if (! Generator::isValid($model->{$model->getUuidKeyName()})) {
+            $value = $model->{$model->getUuidKeyName()};
+
+            if(is_null($value)) $value = '';
+
+            if (! Generator::isValid($value)) {
                 $model->{$model->getUuidKeyName()} = Generator::uuid4();
             }
         });
 
         static::saving(function ($model) {
-            if (! Generator::isValid($model->{$model->getUuidKeyName()})) {
+            $value = $model->{$model->getUuidKeyName()};
+
+            if(is_null($value)) $value = '';
+            if (! Generator::isValid($value)) {
                 $model->{$model->getUuidKeyName()} = Generator::uuid4();
             }
         });

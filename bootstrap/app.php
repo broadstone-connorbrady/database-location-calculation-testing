@@ -110,6 +110,8 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
+    $router->get('user', 'UserController@getUsers');
+
     require __DIR__.'/../routes/web.php';
 });
 

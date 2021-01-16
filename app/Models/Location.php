@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uuid;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Location extends Model
+class Location extends BaseModel
 {
+    use Uuid, HasFactory;
+
     protected $table = 'locations';
 
     protected $hidden = ['id', 'created_at', 'updated_at'];
