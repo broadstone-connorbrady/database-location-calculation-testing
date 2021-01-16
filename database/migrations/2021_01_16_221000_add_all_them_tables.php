@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -50,22 +51,32 @@ class AddAllThemTables extends Migration {
             [
                 'uuid' => Uuid::uuid4()->toString(),
                 'title' => 'For sale',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'uuid' => Uuid::uuid4()->toString(),
                 'title' => 'For let',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'uuid' => Uuid::uuid4()->toString(),
                 'title' => 'Contract pending',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'uuid' => Uuid::uuid4()->toString(),
                 'title' => 'Sold',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'uuid' => Uuid::uuid4()->toString(),
                 'title' => 'Do not sell',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
         ]);
 
