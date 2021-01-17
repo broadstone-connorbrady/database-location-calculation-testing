@@ -8,9 +8,14 @@ services:
     image: prom/prometheus
     volumes:
     - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
-    - ./docker/.mysqld_exporter.cnf:/etc/.mysqld_exporter.cnf
     ports:
       - "9090:9090"
+  mysqld-exporter:
+    image: prom/mysqld-exporter
+    ports:
+      - "9104:9104"
+    environment:
+      - DATA_SOURCE_NAME="mysqld_exporter:root@(mysql-server:3306)/a-database"
   mysql-server:
     image: 'mysql:5.7'
     environment:
