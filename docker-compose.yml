@@ -1,5 +1,15 @@
 version: '3'
 services:
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+  prometheus:
+    image: prom/prometheus
+    volumes:
+    - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
   mysql-server:
     image: 'mysql:5.7'
     environment:
