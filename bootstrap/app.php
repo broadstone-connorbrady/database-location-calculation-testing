@@ -110,7 +110,7 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
-    $router->get('user', 'UserController@getUsers');
+    $router->get('houses_distance', 'HouseController@getHousesWithDistance');
 
     require __DIR__.'/../routes/web.php';
 });

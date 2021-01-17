@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Traits\Uuid;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class House extends Model
 {
-    use Uuid;
+    use Uuid, HasFactory;
 
     protected $table = 'houses';
 
