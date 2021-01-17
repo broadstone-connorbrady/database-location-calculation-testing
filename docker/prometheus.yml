@@ -20,7 +20,9 @@ scrape_configs:
       - targets:
           - localhost:9090
   - job_name: mysql
-    target_groups:
-      - targets: [ 'mysql-server:3306' ]
-        labels:
-        alias: database
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+        - localhost:9090
+

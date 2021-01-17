@@ -8,6 +8,7 @@ services:
     image: prom/prometheus
     volumes:
     - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+    - ./docker/.mysqld_exporter.cnf:/etc/.mysqld_exporter.cnf
     ports:
       - "9090:9090"
   mysql-server:
