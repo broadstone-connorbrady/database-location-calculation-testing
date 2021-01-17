@@ -16,8 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $location = Location::factory()->count(50000)->create();
+        $location = Location::factory()->count(3000)->create();
         // $estateAgents = EstateAgent::factory()->count(500)->create();
-        // $houses = House::factory()->count(5000)->create();
+        try {
+
+            // $houses = House::factory()->count(300)->create();
+        } catch (\Exception $e) {
+            dump($e);
+        }
     }
 }

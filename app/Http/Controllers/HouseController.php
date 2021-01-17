@@ -16,10 +16,13 @@ class HouseController extends BaseController
     }
 
     public function getHousesWithDistance() {
-        $this->houseRepository->getHousesWithDistance();
+        $data = $this->houseRepository->getHousesWithDistance();
 
         $queries = DB::getQueryLog();
+
         dd($this->get_log_sql($queries));
+
+        return $data->items();
     }
 
     function get_log_sql($log)

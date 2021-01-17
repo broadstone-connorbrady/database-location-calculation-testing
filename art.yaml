@@ -1,0 +1,15 @@
+config:
+  target: "http://localhost:8000/houses_distance"
+  phases:
+    - arrivalRate: 50
+      duration: 600
+  environments:
+    local-dev:
+      target: "http://localhost:8080"
+      phases:
+        - arrivalRate: 10
+          duration: 60
+    preprod:
+      target: "https://service-foo.preprod.acmecorp.digital"
+scenarios:
+# Scenario definitions would go here.

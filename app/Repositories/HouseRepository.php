@@ -28,7 +28,9 @@ class HouseRepository
                 'locations.longitude'
             ) . ' AS job_distance');
 
-        return $houses->get();
+        $houses->orderBy('job_distance');
+
+        return $houses->paginate(10);
     }
 
     public function geo_distance_sql($lat1, $lng1, $lat2, $lng2, $metric = 'mi')
